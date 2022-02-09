@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/SuperHeros/app/src/main/res/layout/activity_main.xml" value="0.16621376811594202" />
+        <entry key="..\:/Android/SuperHeros/app/src/main/res/layout/fragment_hero_detail.xml" value="0.264" />
         <entry key="..\:/Android/SuperHeros/app/src/main/res/layout/fragment_hero_list.xml" value="0.16621376811594202" />
         <entry key="..\:/Android/SuperHeros/app/src/main/res/layout/superhero_list_item.xml" value="0.16621376811594202" />
       </map>

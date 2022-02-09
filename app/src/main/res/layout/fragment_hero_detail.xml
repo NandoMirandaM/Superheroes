@@ -1,14 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HeroDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="@dimen/padding_max"
+        tools:context=".HeroDetailFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/padding_max"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:gravity="center"
+            tools:text="Batman"/>
+
+        <ImageView
+            android:id="@+id/url_image"
+            android:layout_width="200dp"
+            android:layout_height="220dp"
+            android:layout_below="@id/tv_name"
+            tools:src="@android:mipmap/sym_def_app_icon" />
+
+        <LinearLayout
+            android:id="@+id/layout_intel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/url_image"
+            android:layout_toEndOf="@id/url_image"
+            android:layout_margin="@dimen/padding_max"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvIP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/intelligence"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_intel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_max"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="100"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_strength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_intel"
+            android:layout_toEndOf="@id/url_image"
+            android:layout_marginBottom="@dimen/padding_max"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/strength"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_max"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="100"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_strength"
+            android:layout_toEndOf="@id/url_image"
+            android:layout_marginBottom="@dimen/padding_max"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/speed"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_max"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="100"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_durability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_speed"
+            android:layout_toEndOf="@id/url_image"
+            android:layout_marginBottom="@dimen/padding_max"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/durability"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_durability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_max"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="100"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_durability"
+            android:layout_toEndOf="@id/url_image"
+            android:layout_marginBottom="@dimen/padding_max"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/power"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_max"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="100"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_combat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_power"
+            android:layout_toEndOf="@id/url_image"
+            android:layout_marginBottom="@dimen/padding_max"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/combat"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_combat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_max"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="100"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/layout_combat"
+            android:background="@color/gray"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/divider"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/biography"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/biography"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+</layout>

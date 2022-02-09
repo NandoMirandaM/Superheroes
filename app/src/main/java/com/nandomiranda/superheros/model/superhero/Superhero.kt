@@ -1,4 +1,4 @@
-package com.nandomiranda.superheros.model
+package com.nandomiranda.superheros.model.superhero
 
 data class Superhero (val id: Int, val name: String,
                       val power_int : Int, val power_stre : Int, val power_speed : Int, val power_durab : Int, val power_power : Int, val power_combat : Int,

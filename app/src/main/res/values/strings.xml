@@ -9,4 +9,5 @@
     <string name="power">Power:</string>
     <string name="combat">Combat:</string>
     <string name="biography">Biography:</string>
+    <string name="full_name">Full name:</string>
 </resources>

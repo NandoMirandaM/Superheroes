@@ -206,13 +206,45 @@
             android:layout_below="@id/divider"
             android:layout_alignParentBottom="true">
 
-            <TextView
-                android:id="@+id/biography"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/biography"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:padding="@dimen/padding_max">
+
+                <TextView
+                    android:id="@+id/biography"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/biography"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/layout_fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/biography"
+                    android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/full_name"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_max"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        tools:text="Bruce wayne"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </ScrollView>
 

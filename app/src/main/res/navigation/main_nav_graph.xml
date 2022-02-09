@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/heroListFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <fragment
+        android:id="@+id/heroListFragment"
+        android:name="com.nandomiranda.superheros.view.fragments.HeroListFragment"
+        android:label="HeroListFragment"
+        tools:layout="@layout/fragment_hero_list">
+        <action
+            android:id="@+id/action_heroListFragment_to_heroDetailFragment"
+            app:destination="@id/heroDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroDetailFragment"
+        android:name="com.nandomiranda.superheros.view.fragments.HeroDetailFragment"
+        android:label="HeroDetailFragment"
+        tools:layout="@layout/fragment_hero_detail"/>
+</navigation>

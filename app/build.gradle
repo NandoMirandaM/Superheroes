@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt' //dataBinding
+    id 'androidx.navigation.safeargs' //navigation
+    id 'kotlin-parcelize' //Parcelize para compartir entre fragment
 }
 
 android {
@@ -29,6 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    dataBinding{
+        enabled=true
+    }
+
 }
 
 dependencies {
@@ -40,4 +48,26 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    ///RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    ///Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    ///Libreria para JSON
+    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
+
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    //corrutinas
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+
+    ////navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
 }

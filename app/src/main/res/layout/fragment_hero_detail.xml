@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/padding_max"
-        tools:context=".HeroDetailFragment">
+        tools:context=".view.fragments.HeroDetailFragment">
 
         <TextView
             android:id="@+id/tv_name"

@@ -1,8 +1,9 @@
-package com.nandomiranda.superheros
+package com.nandomiranda.superheros.view.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.nandomiranda.superheros.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 

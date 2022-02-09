@@ -8,6 +8,22 @@
     <string name="durability">Durability:</string>
     <string name="power">Power:</string>
     <string name="combat">Combat:</string>
-    <string name="biography">Biography:</string>
+    <string name="biography">Biography</string>
     <string name="full_name">Full name:</string>
+    <string name="place_of_birth">Place of birth:</string>
+    <string name="first_appearance">First appearance:</string>
+    <string name="publisher">Publisher:</string>
+    <string name="appearance">Appearance</string>
+    <string name="gender">Gender:</string>
+    <string name="race">Race:</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight:</string>
+    <string name="eye_color">Eye Color:</string>
+    <string name="hair_color">Hair Color:</string>
+    <string name="work">Work</string>
+    <string name="occupation">Occupation:</string>
+    <string name="base">Base:</string>
+    <string name="connections">Connections</string>
+    <string name="group_affiliation">Group affiliation</string>
+    <string name="relatives">Relatives:</string>
 </resources>

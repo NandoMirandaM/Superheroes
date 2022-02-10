@@ -24,7 +24,6 @@ class HeroListViewModel: ViewModel() {
     init {
         viewModelScope.launch {
                 _superheroList.value = repository.fetchSuperhero()
-            // repository.fetchMovie()
         }
     }
 

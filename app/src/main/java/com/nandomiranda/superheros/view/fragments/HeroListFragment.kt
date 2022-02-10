@@ -1,5 +1,6 @@
 package com.nandomiranda.superheros.view.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,10 +14,26 @@ import com.nandomiranda.superheros.databinding.FragmentHeroListBinding
 import com.nandomiranda.superheros.model.superhero.Superhero
 import com.nandomiranda.superheros.model.superhero.superheroAdapter
 import com.nandomiranda.superheros.viewModel.HeroListViewModel
+import java.lang.ClassCastException
 
 class HeroListFragment : Fragment() {
 
     private lateinit var binding: FragmentHeroListBinding
+
+    interface  SuperheroSelectListener {
+        fun onSuperheroSelected(superhero: Superhero)
+    }
+
+    private lateinit var superheroSelectListener: SuperheroSelectListener
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        superheroSelectListener = try {
+            context as SuperheroSelectListener
+        }catch (e: ClassCastException){
+            throw ClassCastException("$context must implement SuperheroSelectListener")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater , container: ViewGroup? ,
@@ -43,6 +60,11 @@ class HeroListFragment : Fragment() {
 
         adapter.onItemClickListener = {
             Toast.makeText(requireActivity(),it.name, Toast.LENGTH_SHORT).show()
+        }
+
+        adapter.onItemClickListener={
+            superheroSelectListener.onSuperheroSelected(it)
+            // Toast.makeText(requireActivity(),it.title, Toast.LENGTH_SHORT).show()
         }
 
         return binding.root

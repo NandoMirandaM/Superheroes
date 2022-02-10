@@ -38,7 +38,7 @@ class HeroListRepository {
         val firstAppe = "biography.first_appearance"
         val publisher = biography.publisher
 
-        //Biography
+        //appearance
         val appearance = superheroJsonResponse.appearance
         val gender= appearance.gender
         val race= appearance.race

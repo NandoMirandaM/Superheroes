@@ -18,11 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_margin="@dimen/padding_max"
+            android:layout_marginStart="@dimen/padding_max"
+            android:layout_marginTop="@dimen/padding_max"
+            android:layout_marginEnd="@dimen/padding_max"
+            android:layout_marginBottom="@dimen/padding_max"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="24sp"
-            android:gravity="center"
-            tools:text="Batman"/>
+            tools:text="Batman" />
 
         <ImageView
             android:id="@+id/url_image"

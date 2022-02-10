@@ -18,5 +18,9 @@
         android:id="@+id/heroDetailFragment"
         android:name="com.nandomiranda.superheros.view.fragments.HeroDetailFragment"
         android:label="HeroDetailFragment"
-        tools:layout="@layout/fragment_hero_detail"/>
+        tools:layout="@layout/fragment_hero_detail">
+        <argument
+            android:name="superhero"
+            app:argType="com.nandomiranda.superheros.model.superhero.Superhero"/>
+    </fragment>
 </navigation>

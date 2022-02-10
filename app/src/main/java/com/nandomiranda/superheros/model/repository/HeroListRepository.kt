@@ -14,7 +14,7 @@ class HeroListRepository(private val database: SHDatabase) {
 
     suspend fun fetchSuperhero(): MutableList<Superhero> {
         return withContext(Dispatchers.IO){
-            for (id in 1..30){
+            for (id in 1..10){
                 val heroListJson = service.getSuperheroes(id)
                 val heroList = parseHeroResult(heroListJson)
                 database.SHDao.insertAll(heroList)

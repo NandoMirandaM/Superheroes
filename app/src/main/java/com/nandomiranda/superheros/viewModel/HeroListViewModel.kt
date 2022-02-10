@@ -20,7 +20,7 @@ class HeroListViewModel(application: Application): AndroidViewModel(application)
     //Inicializamos la base de datos
     private val database = getDatabase(application.applicationContext)
     //creamos el repositorio que seria la comunicación del viewModel con el Model (Api)
-    private val repository = HeroListRepository(database)
+     val repository = HeroListRepository(database)
 
     init {
         viewModelScope.launch {

@@ -1,23 +1,27 @@
 package com.nandomiranda.superheros.view.fragments
 
-import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.nandomiranda.superheros.databinding.FragmentHeroListBinding
 import com.nandomiranda.superheros.model.superhero.Superhero
 import com.nandomiranda.superheros.model.superhero.superheroAdapter
 import com.nandomiranda.superheros.viewModel.HeroLVMFactory
 import com.nandomiranda.superheros.viewModel.HeroListViewModel
-import java.lang.ClassCastException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 
 class HeroListFragment : Fragment() {
 
@@ -59,6 +63,17 @@ class HeroListFragment : Fragment() {
         //observer para los cambios de las lista
         viewModel.superheroList.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
+        })
+
+        //paginación de recyclerView
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView , newState: Int) {
+                super.onScrollStateChanged(recyclerView , newState)
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    Log.d("-----" , "end")
+
+                }
+            }
         })
 
         adapter.onItemClickListener = {

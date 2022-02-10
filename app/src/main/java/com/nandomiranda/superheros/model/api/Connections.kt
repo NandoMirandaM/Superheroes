@@ -1,3 +1,5 @@
 package com.nandomiranda.superheros.model.api
 
-class Connections(val group_affiliation: String, val relatives:String)
+import com.squareup.moshi.Json
+
+class Connections(@Json(name="group-affiliation")val group_affiliation: String , val relatives:String)

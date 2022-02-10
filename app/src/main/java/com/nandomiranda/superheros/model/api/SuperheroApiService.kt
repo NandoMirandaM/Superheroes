@@ -6,8 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface SuperheroApiService {
-    @GET("10220161311159074/{id}")
-    suspend fun getSuperheroes(@Path("id") id: Int?): SuperheroJsonResponse
+    @GET("10220161311159074/1")
+    suspend fun getSuperheroes(): SuperheroJsonResponse
 }
 
 private var retrofit = Retrofit.Builder()

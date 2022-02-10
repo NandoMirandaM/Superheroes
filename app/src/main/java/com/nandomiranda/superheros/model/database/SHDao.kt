@@ -11,8 +11,8 @@ interface SHDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(superheroList: MutableList<Superhero>)
 
-    @Query("Select * From superheros where id == :id")
-    fun getSuperheroDB(id: Int): MutableList<Superhero>
+    @Query("Select * From superheros")
+    fun getSuperheroDB(): MutableList<Superhero>
 
 
 }

@@ -1,18 +1,27 @@
 package com.nandomiranda.superheros.model.repository
 
+import androidx.room.Database
 import com.nandomiranda.superheros.model.api.SuperheroJsonResponse
 import com.nandomiranda.superheros.model.api.service
+import com.nandomiranda.superheros.model.database.SHDatabase
 import com.nandomiranda.superheros.model.superhero.Superhero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class HeroListRepository {
+class HeroListRepository(private val database: SHDatabase) {
+
+    private lateinit var superhero: MutableList<Superhero>
+
     suspend fun fetchSuperhero(): MutableList<Superhero> {
         return withContext(Dispatchers.IO){
-            val heroListJson = service.getSuperheroes()
-            val heroList = parseHeroResult(heroListJson)
+            for (id in 1..30){
+                val heroListJson = service.getSuperheroes(id)
+                val heroList = parseHeroResult(heroListJson)
+                database.SHDao.insertAll(heroList)
 
-            heroList
+            }
+            superhero = database.SHDao.getSuperheroDB()
+            superhero
         }
     }
 

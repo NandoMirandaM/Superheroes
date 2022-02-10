@@ -1,5 +1,6 @@
 package com.nandomiranda.superheros.view.fragments
 
+import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.nandomiranda.superheros.databinding.FragmentHeroListBinding
 import com.nandomiranda.superheros.model.superhero.Superhero
 import com.nandomiranda.superheros.model.superhero.superheroAdapter
+import com.nandomiranda.superheros.viewModel.HeroLVMFactory
 import com.nandomiranda.superheros.viewModel.HeroListViewModel
 import java.lang.ClassCastException
 
@@ -48,7 +50,7 @@ class HeroListFragment : Fragment() {
         recyclerView.layoutManager= GridLayoutManager(requireActivity(),2)
 
         //variable ViewModel
-        val viewModel = ViewModelProvider(this).get(HeroListViewModel::class.java)
+        val viewModel = ViewModelProvider(this, HeroLVMFactory(requireActivity().application)).get(HeroListViewModel::class.java)
 
         //asignamos el adapter al recyclerview
         val adapter = superheroAdapter()

@@ -1,25 +1,26 @@
 package com.nandomiranda.superheros.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
 import com.nandomiranda.superheros.model.api.SuperheroJsonResponse
 import com.nandomiranda.superheros.model.api.service
+import com.nandomiranda.superheros.model.database.getDatabase
 import com.nandomiranda.superheros.model.repository.HeroListRepository
 import com.nandomiranda.superheros.model.superhero.Superhero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HeroListViewModel: ViewModel() {
+class HeroListViewModel(application: Application): AndroidViewModel(application) {
     private var _superheroList = MutableLiveData<MutableList<Superhero>>()
 
     val superheroList: LiveData<MutableList<Superhero>>
         get() = _superheroList
 
+    //Inicializamos la base de datos
+    private val database = getDatabase(application.applicationContext)
     //creamos el repositorio que seria la comunicación del viewModel con el Model (Api)
-    private val repository = HeroListRepository()
+    private val repository = HeroListRepository(database)
 
     init {
         viewModelScope.launch {

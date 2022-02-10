@@ -9,7 +9,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 
 @Database(entities = [Superhero::class], version = 1)
 abstract class SHDatabase: RoomDatabase(){
-    abstract val SHdAO: SHDao
+    abstract val SHDao: SHDao
 }
 
 private lateinit var INSTANCE: SHDatabase

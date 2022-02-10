@@ -71,7 +71,9 @@ class HeroListFragment : Fragment() {
                 super.onScrollStateChanged(recyclerView , newState)
                 if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     Log.d("-----" , "end")
-
+                    viewModel.viewModelScope.launch {
+                        viewModel.newMetodo()
+                    }
                 }
             }
         })

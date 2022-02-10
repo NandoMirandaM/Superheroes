@@ -24,8 +24,13 @@ class HeroListViewModel(application: Application): AndroidViewModel(application)
 
     init {
         viewModelScope.launch {
-                _superheroList.value = repository.fetchSuperhero()
+                //_superheroList.value = repository.fetchSuperhero()
+            newMetodo()
         }
+    }
+
+    suspend fun newMetodo(){
+        _superheroList.value = repository.fetchSuperhero()
     }
 
 }

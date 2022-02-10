@@ -11,15 +11,18 @@ import kotlinx.coroutines.withContext
 class HeroListRepository(private val database: SHDatabase) {
 
     private lateinit var superhero: MutableList<Superhero>
+    private var page = 1
 
     suspend fun fetchSuperhero(): MutableList<Superhero> {
         return withContext(Dispatchers.IO){
-            for (id in 1..10){
+            var aux= page*10
+            for (id in 1..aux){
                 val heroListJson = service.getSuperheroes(id)
                 val heroList = parseHeroResult(heroListJson)
                 database.SHDao.insertAll(heroList)
 
             }
+            page++
             superhero = database.SHDao.getSuperheroDB()
             superhero
         }

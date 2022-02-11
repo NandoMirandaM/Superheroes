@@ -10,8 +10,6 @@ interface SuperheroApiService {
     suspend fun getSuperheroes(@Path("id") id:Int): SuperheroJsonResponse
 }
 
-//@Path("id") id:Int
-
 private var retrofit = Retrofit.Builder()
     .baseUrl("https://superheroapi.com/api/")
     .addConverterFactory(MoshiConverterFactory.create())

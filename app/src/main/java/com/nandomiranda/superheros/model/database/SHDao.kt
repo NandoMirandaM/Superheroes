@@ -8,7 +8,7 @@ import com.nandomiranda.superheros.model.superhero.Superhero
 
 @Dao
 interface SHDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(superheroList: MutableList<Superhero>)
 
     @Query("Select * From superheros")

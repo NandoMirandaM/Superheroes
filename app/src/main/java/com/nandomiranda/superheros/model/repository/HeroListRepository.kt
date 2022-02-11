@@ -1,7 +1,5 @@
 package com.nandomiranda.superheros.model.repository
 
-import android.util.Log
-import androidx.room.Database
 import com.nandomiranda.superheros.model.api.SuperheroJsonResponse
 import com.nandomiranda.superheros.model.api.service
 import com.nandomiranda.superheros.model.database.SHDatabase
@@ -47,9 +45,9 @@ class HeroListRepository(private val database: SHDatabase) {
 
         //Biography
         val biography = superheroJsonResponse.biography
-        val fullName = "biography.fullname"
-        val placeOfBirth = "biography.place_of_birth"
-        val firstAppe = "biography.first_appearance"
+        val fullN = biography.fullname
+        val placeOfBirth = biography.place_of_birth
+        val firstAppe = biography.first_appearance
         val publisher = biography.publisher
 
         //appearance
@@ -58,8 +56,8 @@ class HeroListRepository(private val database: SHDatabase) {
         val race= appearance.race
         val height= appearance.heightCm
         val weight= appearance.weightKg
-        val eyeColor= "appearance.eye_color"
-        val hairColor= "appearance.hair_color"
+        val eyeColor= appearance.eye_color
+        val hairColor= appearance.hair_color
 
         //Work
         val work = superheroJsonResponse.work
@@ -68,7 +66,7 @@ class HeroListRepository(private val database: SHDatabase) {
 
         //connections
         val connection = superheroJsonResponse.connections
-        val affiliation = "connection.group_affiliation"
+        val affiliation = connection.group_affiliation
         val relatives = connection.relatives
 
         //image
@@ -76,7 +74,7 @@ class HeroListRepository(private val database: SHDatabase) {
         val url= image.url
 
         heroList.add(
-            Superhero(id,name,intelligence,strength,speed,durability,power,combat,fullName,placeOfBirth,firstAppe,publisher,
+            Superhero(id,name,intelligence,strength,speed,durability,power,combat,fullN,placeOfBirth,firstAppe,publisher,
             gender,race,height,weight,eyeColor,hairColor,occupation,base,affiliation,relatives,url)
         )
 

@@ -85,7 +85,7 @@ class HeroDetailFragment : Fragment() {
         durab.text = superhero.power_durab
         power.text = superhero.power_power
         combat.text = superhero.power_combat
-        fullname.text = superhero.fullname
+        fullname.text = superhero.fullN
         placeBirth.text = superhero.bio_placeBirth
         appe.text = superhero.bio_appearance
         publisher.text = superhero.bio_publisher

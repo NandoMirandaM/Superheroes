@@ -78,9 +78,9 @@ class HeroListFragment : Fragment() {
             }
         })
 
-        adapter.onItemClickListener = {
+/*        adapter.onItemClickListener = {
             Toast.makeText(requireActivity(),it.name, Toast.LENGTH_SHORT).show()
-        }
+        }*/
 
         viewModel.status.observe(requireActivity(), Observer {
             apiResponseStatus ->
@@ -96,14 +96,9 @@ class HeroListFragment : Fragment() {
 
         adapter.onItemClickListener={
             superheroSelectListener.onSuperheroSelected(it)
-            // Toast.makeText(requireActivity(),it.title, Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
-    }
-
-    private fun saveCont(){
-
     }
 
 }

@@ -86,11 +86,11 @@ class HeroListFragment : Fragment() {
         viewModel.status.observe(requireActivity(), Observer {
             apiResponseStatus ->
             if (apiResponseStatus == ApiResponseStatus.LOADING){
-                binding.loading.visibility = View.VISIBLE
+                binding.rlProgressbar.visibility = View.VISIBLE
             }else if(apiResponseStatus == ApiResponseStatus.DONE){
-                binding.loading.visibility = View.GONE
+                binding.rlProgressbar.visibility = View.GONE
             }else if (apiResponseStatus == ApiResponseStatus.ERROR){
-                binding.loading.visibility = View.GONE
+                binding.rlProgressbar.visibility = View.GONE
                 Toast.makeText(requireContext(),"Requiere conexión a Internet",Toast.LENGTH_SHORT).show()
             }
         })

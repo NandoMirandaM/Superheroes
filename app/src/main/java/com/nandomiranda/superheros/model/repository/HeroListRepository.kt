@@ -1,5 +1,6 @@
 package com.nandomiranda.superheros.model.repository
 
+import android.util.Log
 import androidx.room.Database
 import com.nandomiranda.superheros.model.api.SuperheroJsonResponse
 import com.nandomiranda.superheros.model.api.service
@@ -12,16 +13,17 @@ class HeroListRepository(private val database: SHDatabase) {
 
     lateinit var superhero: MutableList<Superhero>
     private var page = 1
+    private var aux=1
 
     suspend fun fetchSuperhero(): MutableList<Superhero> {
         return withContext(Dispatchers.IO){
-            var aux= page*10
-            for (id in 1..aux){
+            for (id in aux..page*6){
                 val heroListJson = service.getSuperheroes(id)
                 val heroList = parseHeroResult(heroListJson)
                 database.SHDao.insertAll(heroList)
 
             }
+            aux += 6
             page++
             superhero = database.SHDao.getSuperheroDB()
             superhero

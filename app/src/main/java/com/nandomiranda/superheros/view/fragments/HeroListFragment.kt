@@ -14,6 +14,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nandomiranda.superheros.databinding.FragmentHeroListBinding
+import com.nandomiranda.superheros.model.api.ApiResponseStatus
 import com.nandomiranda.superheros.model.superhero.Superhero
 import com.nandomiranda.superheros.model.superhero.superheroAdapter
 import com.nandomiranda.superheros.viewModel.HeroLVMFactory
@@ -70,9 +71,9 @@ class HeroListFragment : Fragment() {
             override fun onScrollStateChanged(recyclerView: RecyclerView , newState: Int) {
                 super.onScrollStateChanged(recyclerView , newState)
                 if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    Log.d("-----" , "end")
+
                     viewModel.viewModelScope.launch {
-                        viewModel.newMetodo()
+                        viewModel.newSuperheroes()
                     }
                 }
             }
@@ -81,6 +82,18 @@ class HeroListFragment : Fragment() {
         adapter.onItemClickListener = {
             Toast.makeText(requireActivity(),it.name, Toast.LENGTH_SHORT).show()
         }
+
+        viewModel.status.observe(requireActivity(), Observer {
+            apiResponseStatus ->
+            if (apiResponseStatus == ApiResponseStatus.LOADING){
+                binding.loading.visibility = View.VISIBLE
+            }else if(apiResponseStatus == ApiResponseStatus.DONE){
+                binding.loading.visibility = View.GONE
+            }else if (apiResponseStatus == ApiResponseStatus.ERROR){
+                binding.loading.visibility = View.GONE
+                Toast.makeText(requireContext(),"Requiere conexión a Internet",Toast.LENGTH_SHORT).show()
+            }
+        })
 
         adapter.onItemClickListener={
             superheroSelectListener.onSuperheroSelected(it)

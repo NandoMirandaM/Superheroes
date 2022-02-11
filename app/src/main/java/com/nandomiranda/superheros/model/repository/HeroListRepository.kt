@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 
 class HeroListRepository(private val database: SHDatabase) {
 
-    private lateinit var superhero: MutableList<Superhero>
+    lateinit var superhero: MutableList<Superhero>
     private var page = 1
 
     suspend fun fetchSuperhero(): MutableList<Superhero> {

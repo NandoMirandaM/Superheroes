@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SuperHéroes</string>
+    <string name="intelligence">Inteligencia:</string>
+    <string name="strength">Fuerza:</string>
+    <string name="speed">Velocidad:</string>
+    <string name="durability">Durabilidad:</string>
+    <string name="power">Poder:</string>
+    <string name="combat">Combate:</string>
+    <string name="biography">Biografía</string>
+    <string name="full_name">Nombre Completo:</string>
+    <string name="place_of_birth">Lugar de nacimiento:</string>
+    <string name="first_appearance">Primera aparición:</string>
+    <string name="publisher">Editor:</string>
+    <string name="appearance">Apariencia</string>
+    <string name="gender">Género:</string>
+    <string name="race">Raza:</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso:</string>
+    <string name="eye_color">Color de Ojos:</string>
+    <string name="hair_color">Color de cabello:</string>
+    <string name="work">Trabajo</string>
+    <string name="occupation">Ocupación:</string>
+    <string name="base">base:</string>
+    <string name="connections">Conexiones</string>
+    <string name="group_affiliation">Afiliación de grupo</string>
+    <string name="relatives">Parientes:</string>
+</resources>

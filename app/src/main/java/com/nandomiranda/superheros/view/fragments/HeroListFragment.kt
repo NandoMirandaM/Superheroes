@@ -78,10 +78,6 @@ class HeroListFragment : Fragment() {
             }
         })
 
-/*        adapter.onItemClickListener = {
-            Toast.makeText(requireActivity(),it.name, Toast.LENGTH_SHORT).show()
-        }*/
-
         viewModel.status.observe(requireActivity(), Observer {
             apiResponseStatus ->
             if (apiResponseStatus == ApiResponseStatus.LOADING){
@@ -100,5 +96,4 @@ class HeroListFragment : Fragment() {
 
         return binding.root
     }
-
 }

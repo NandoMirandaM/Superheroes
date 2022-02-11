@@ -23,8 +23,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private const val PAGE_KEY = "page_key"
-private const val AUX_KEY = "aux_key"
 class HeroListFragment : Fragment() {
 
     private lateinit var binding: FragmentHeroListBinding

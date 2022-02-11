@@ -3,6 +3,7 @@ package com.nandomiranda.superheros.model.repository
 import com.nandomiranda.superheros.model.api.SuperheroJsonResponse
 import com.nandomiranda.superheros.model.api.service
 import com.nandomiranda.superheros.model.database.SHDatabase
+import com.nandomiranda.superheros.model.sharedP.SharedP.Companion.prefs
 import com.nandomiranda.superheros.model.superhero.Superhero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -10,19 +11,21 @@ import kotlinx.coroutines.withContext
 class HeroListRepository(private val database: SHDatabase) {
 
     lateinit var superhero: MutableList<Superhero>
-    private var page = 1
-    private var aux=1
+    private var page = prefs.getPage()
+    private var aux = prefs.getAux()
 
     suspend fun fetchSuperhero(): MutableList<Superhero> {
         return withContext(Dispatchers.IO){
-            for (id in aux..page*6){
+            for (id in aux..page*10){
                 val heroListJson = service.getSuperheroes(id)
                 val heroList = parseHeroResult(heroListJson)
                 database.SHDao.insertAll(heroList)
 
             }
-            aux += 6
+            aux += 10
             page++
+            prefs.savePage(page)
+            prefs.saveAux(aux)
             superhero = database.SHDao.getSuperheroDB()
             superhero
         }

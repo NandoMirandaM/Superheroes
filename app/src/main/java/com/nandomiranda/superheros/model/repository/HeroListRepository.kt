@@ -1,5 +1,7 @@
 package com.nandomiranda.superheros.model.repository
 
+import android.util.Log
+import android.widget.Toast
 import com.nandomiranda.superheros.model.api.SuperheroJsonResponse
 import com.nandomiranda.superheros.model.api.service
 import com.nandomiranda.superheros.model.database.SHDatabase
@@ -16,17 +18,21 @@ class HeroListRepository(private val database: SHDatabase) {
 
     suspend fun fetchSuperhero(): MutableList<Superhero> {
         return withContext(Dispatchers.IO){
-            for (id in aux..page*10){
-                val heroListJson = service.getSuperheroes(id)
-                val heroList = parseHeroResult(heroListJson)
-                database.SHDao.insertAll(heroList)
+            if(page < 740){
+                for (id in aux..page){
+                    val heroListJson = service.getSuperheroes(id)
+                    val heroList = parseHeroResult(heroListJson)
+                    database.SHDao.insertAll(heroList)
+                }
+                aux += 10
+                page += 10
+                Log.e("valores","aux = $aux, pagina = $page")
+                prefs.savePage(page)
+                prefs.saveAux(aux)
 
+                superhero = database.SHDao.getSuperheroDB()
             }
-            aux += 10
-            page++
-            prefs.savePage(page)
-            prefs.saveAux(aux)
-            superhero = database.SHDao.getSuperheroDB()
+
             superhero
         }
     }
@@ -57,7 +63,7 @@ class HeroListRepository(private val database: SHDatabase) {
         val appearance = superheroJsonResponse.appearance
         val gender= appearance.gender
         val race= appearance.race
-        val height= appearance.heightCm
+        val height= appearance.heightP
         val weight= appearance.weightKg
         val eyeColor= appearance.eye_color
         val hairColor= appearance.hair_color

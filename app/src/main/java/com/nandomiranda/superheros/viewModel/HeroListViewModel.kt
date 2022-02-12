@@ -2,12 +2,14 @@ package com.nandomiranda.superheros.viewModel
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.*
 import com.nandomiranda.superheros.model.api.ApiResponseStatus
 import com.nandomiranda.superheros.model.api.SuperheroJsonResponse
 import com.nandomiranda.superheros.model.api.service
 import com.nandomiranda.superheros.model.database.getDatabase
 import com.nandomiranda.superheros.model.repository.HeroListRepository
+import com.nandomiranda.superheros.model.sharedP.SharedP
 import com.nandomiranda.superheros.model.superhero.Superhero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,8 +37,13 @@ class HeroListViewModel(application: Application): AndroidViewModel(application)
         viewModelScope.launch {
                 try {
                     //_status.value = ApiResponseStatus.LOADING
-                    newSuperheroes()
-                    //_status.value = ApiResponseStatus.DONE
+                       // if(SharedP.prefs.getPage() < 74 ){
+                            newSuperheroes()
+                       /* }else{
+                            Toast.makeText(application,"Ya no hay más Superhéros",Toast.LENGTH_SHORT).show()
+                            _status.value = ApiResponseStatus.DONE
+                        }*/
+
                 }catch (e:UnknownHostException){
                     _status.value = ApiResponseStatus.ERROR
                     Log.e("Error" , "No Internet Connection." , e)

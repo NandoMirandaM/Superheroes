@@ -18,7 +18,7 @@ class Prefs(context: Context) {
     }
 
     fun getPage(): Int{
-        return storage.getInt(PAGE,1)
+        return storage.getInt(PAGE,10)
     }
 
     fun getAux(): Int{

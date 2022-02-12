@@ -30,9 +30,9 @@ class HeroListRepository(private val database: SHDatabase) {
                 prefs.savePage(page)
                 prefs.saveAux(aux)
 
-                superhero = database.SHDao.getSuperheroDB()
-            }
 
+            }
+            superhero = database.SHDao.getSuperheroDB()
             superhero
         }
     }

@@ -1,5 +1,6 @@
 package com.nandomiranda.superheros.model.superhero
 
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import com.nandomiranda.superheros.R
 import com.nandomiranda.superheros.databinding.SuperheroListItemBinding
 
 class superheroAdapter : ListAdapter<Superhero,superheroAdapter.ViewHolder>(DiffCallBack){
@@ -46,9 +52,29 @@ class superheroAdapter : ListAdapter<Superhero,superheroAdapter.ViewHolder>(Diff
     inner class ViewHolder (private val binding: SuperheroListItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun  bind(superhero: Superhero){
             binding.heroName.text = superhero.name
-            Glide.with(binding.heroImage.context)
-                .load(superhero.image_Url)
-                .into(binding.heroImage)
+            Glide.with(binding.heroImage.context).load(superhero.image_Url).listener(object :
+                RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException? ,
+                    model: Any? ,
+                    target: Target<Drawable>? ,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.heroImage.setImageResource(R.drawable.ic_baseline_image_not_supported) ///este solo es por si la app va a tronar
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable? ,
+                    model: Any? ,
+                    target: Target<Drawable>? ,
+                    dataSource: DataSource? ,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return false
+                }
+
+            }).error(R.drawable.ic_baseline_image_not_supported).into(binding.heroImage)
 
             //metodo para mandar llamar el lambda al hacer click en cualquier parte del elemento
             binding.root.setOnClickListener {

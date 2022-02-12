@@ -1,5 +1,6 @@
 package com.nandomiranda.superheros.view.fragments
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.nandomiranda.superheros.R
 import com.nandomiranda.superheros.databinding.FragmentHeroDetailBinding
 import com.nandomiranda.superheros.model.superhero.Superhero
@@ -77,7 +82,29 @@ class HeroDetailFragment : Fragment() {
 
     private fun setSuperheroData(superhero: Superhero)
     {
-        Glide.with(this).load(superhero.image_Url).into(image)
+        Glide.with(this).load(superhero.image_Url).listener(object : RequestListener<Drawable> {
+            override fun onLoadFailed(
+                e: GlideException? ,
+                model: Any? ,
+                target: Target<Drawable>? ,
+                isFirstResource: Boolean
+            ): Boolean {
+                image.setImageResource(R.drawable.ic_baseline_image_not_supported) ///este solo es por si la app va a tronar
+                return false
+            }
+
+            override fun onResourceReady(
+                resource: Drawable? ,
+                model: Any? ,
+                target: Target<Drawable>? ,
+                dataSource: DataSource? ,
+                isFirstResource: Boolean
+            ): Boolean {
+                return false
+            }
+
+        }).error(R.drawable.ic_baseline_image_not_supported).into(image)
+
         name.text = superhero.name
         intel.text = superhero.power_int
         strength.text = superhero.power_stre
